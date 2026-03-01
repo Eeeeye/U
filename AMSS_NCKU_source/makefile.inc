@@ -1,7 +1,10 @@
 filein  = -I/usr/include/ -I/usr/lib/x86_64-linux-gnu/openmpi/include/ -I/usr/lib/x86_64-linux-gnu/openmpi/lib/ -I/usr/lib/gcc/x86_64-linux-gnu/11/ -I/usr/include/c++/11/
 LDLIBS  = -L/usr/lib/x86_64-linux-gnu -L/usr/lib64 -L/usr/lib/gcc/x86_64-linux-gnu/11 -lgfortran -lmpi
-CXXAPPFLAGS  = -O3 -Wno-deprecated -Dfortran3 -Dnewc -std=c++14
-f90appflags  = -O3 -x f95-cpp-input
+
+# 🌟 专家级优化：开启 -march=znver4 (AVX-512双泵指令)、-flto (链接时优化)、-fprefetch-loop-arrays (内存预取)
+CXXAPPFLAGS  = -O3 -march=znver4 -flto -fprefetch-loop-arrays -Wno-deprecated -Dfortran3 -Dnewc -std=c++14
+f90appflags  = -O3 -march=znver4 -flto -fprefetch-loop-arrays -x f95-cpp-input
+
 f90          = mpif90
 f77          = mpif90
 CXX          = mpicxx
