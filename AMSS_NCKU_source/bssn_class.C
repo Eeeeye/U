@@ -7301,7 +7301,7 @@ void bssn_class::Constraint_Out()
     for (int lev = 0; lev < GH->levels; lev++)
     {
       // make sure the data consistent for higher levels
-      if (lev > 0) // if the constrait quantities can be reused from the step rhs calculation
+      if (lev >= 0) // if the constrait quantities can be reused from the step rhs calculation
       {
         double TRK4 = PhysTime;
         double ndeps = numepsb;
